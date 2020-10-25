@@ -1,0 +1,13 @@
+name: XWeather
+version: @version@
+main: com.songsofwar.xweather.xweather.XWeather
+api-version: 1.15
+softdepend: [Multiverse-Core, WorldGuard]
+commands:
+  xweather:
+    description: For setting the weather
+    usage: /xweather
+permissions:
+  xweatherplus.admin:
+    description: Allows the player to use xweather commands
+    default: False
