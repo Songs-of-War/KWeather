@@ -70,7 +70,7 @@ public class SunShower extends WorldWeather
 			dz = playerradius*r.nextDouble()*(r.nextBoolean()? 1:-1);
 			loc.add(dx, 0, dz);
 			if(!WeatherHandler.isLocationLoaded(loc)) {continue;}
-			loc.setY(p.getWorld().getMaxHeight());
+			loc.setY(p.getLocation().getY() + 30);
 			p.spawnParticle(Particle.DRIP_WATER, loc, 1);
 		}
 	}
