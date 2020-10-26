@@ -14,7 +14,7 @@
 #Check for new updates for the plugin
 CheckForUpdates: true
 
-#Help debug issues with XWeatherPlus. 
+#Help debug issues with KWeather.
 #At this point setting to true will only print the worlds for each weather type
 Debug: false
 
@@ -40,7 +40,7 @@ WeatherControl:
     UpdateWindPeriod: 5
     #Period in seconds for setting a new wind direction
     WindChangePeriod: 480
-  #Should XWeather Load Chunks that haven't been loaded.
+  #Should KWeather Load Chunks that haven't been loaded.
   #WARNING! Setting to true may cause significant lag 
   #But will allow Tornadoes to travel in unloaded regions.
   LoadChunks: false

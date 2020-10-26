@@ -1,6 +1,6 @@
-#Language File for XWeather
+#Language File for KWeather
 #Here you can translate all text messages in the plugin
-ChatPrefix: "&b&l[XWeatherPlus]"
+ChatPrefix: "&b&l[KWeather]"
 
 #Translates the names of the weather types used in the plugin
 #Warning! Do not use chat formatting or spaces for this part
@@ -54,7 +54,7 @@ ChatCommands:
 #etc
 ChatMessages:
   checkupdate: "<prefix> &aChecking for updates"
-  update: "<prefix> &aAn update has been found for XWeather! Download at <update>"
+  update: "<prefix> &aAn update has been found for KWeather! Download at <update>"
   noupdate: "<prefix> &aPlugin is up to date!"
   failupdate: "<prefix> &cCould not check for updates!"
   weatherload: "<prefix> &aEnabled worlds for <weather>"
@@ -62,7 +62,7 @@ ChatMessages:
   notworld: "<prefix> &c<world> is not a valid world!"
   reload: "<prefix> &aReloading config file"
   needint: "<prefix> &cYou need to use an integer when specifying the duration!"
-  noperm: "<prefix> &cYou do not have permission to use XWeather commands!"
+  noperm: "<prefix> &cYou do not have permission to use KWeather commands!"
   loadingtornado: "<prefix> &aLoading tornado at <tornado_location>"
   doneloadingtornado: "<prefix> &aDone loading tornado at <tornado_location>"
   singlemeteor: "<prefix> &aSending a meteor to <meteor_location>"
@@ -75,20 +75,20 @@ ChatMessages:
   allworlds: "all worlds" 
   stoppingallweather: "<prefix> &aStopping all weather"
   stop_usage: 
-    - "&b/xweather <stop> [optional weather type] [optional world]"
+    - "&b/KWeather <stop> [optional weather type] [optional world]"
     - "&aWeather Types:"
     - "&b- <print_all_weathertypes>"
   set_usage: 
-    - "&b/xweather <set> [weather type] [optional duration] [optional world]"
+    - "&b/KWeather <set> [weather type] [optional duration] [optional world]"
     - "&aWeather Types:"
     - "&b- <print_all_weathertypes>"
   usage:
-    - "&a&lXWeatherPlus Commands"
+    - "&a&lKWeatherPlus Commands"
     - "&aReloads the Configuration File:"
-    - "&b/xweather <reload>"
+    - "&b/KWeather <reload>"
     - "&aStops Weather:"
-    - "&b/xweather <stop> [optional weather type] [optional world]"
+    - "&b/KWeather <stop> [optional weather type] [optional world]"
     - "&aStarts A Specific Weather:"
-    - "&b/xweather <set> [weather type] [optional duration] [optional world]"
+    - "&b/KWeather <set> [weather type] [optional duration] [optional world]"
     - "&aWeather Types:"
     - "&b- <print_all_weathertypes>"
