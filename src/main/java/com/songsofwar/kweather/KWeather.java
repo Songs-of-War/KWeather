@@ -1,7 +1,12 @@
 package com.songsofwar.kweather;
 
+import com.songsofwar.kweather.Weather.Point.PointWeather;
+import com.songsofwar.kweather.Weather.World.Puddle;
+import com.songsofwar.kweather.Weather.World.WorldWeather;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.world.WorldEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -47,7 +52,14 @@ public class KWeather extends JavaPlugin
 	@Override
 	public void onDisable()
 	{
-		
+		Bukkit.getServer().getLogger().info(pluginprefix + "Stopping all current World weather events");
+		WorldWeather.stopAll();
+		Bukkit.getServer().getLogger().info(pluginprefix + "Stopping all current Point weather events");
+		PointWeather.stopAll();
+		for(World world : Bukkit.getServer().getWorlds()) {
+			Bukkit.getServer().getLogger().info(pluginprefix + "Clearing puddles for " + world.getName());
+			Puddle.dryUpPuddles(world);
+		}
 	}
 	
 	public static FileConfiguration reloadCon() 

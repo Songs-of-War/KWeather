@@ -2,7 +2,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 apply plugin: 'java'
 
-group = 'com.songs-of-war.XWeather'
+group = 'com.songs-of-war.KWeather'
 version = '1.0-SNAPSHOT'
 
 sourceCompatibility = '1.8'

@@ -343,13 +343,14 @@ public class WorldWeather implements WorldWeatherType
 	
 	protected void moveEntities(Player p, int radius)
 	{
-		if(!windenabled) {return;}
+		if(!windenabled) return;
+
 		
 		double[] movevector = Wind.getPlayerVelocity(p.getWorld(), (float) (0.0001*playerspeed));
 		if(moveplayer
 				&& !p.isSneaking() && !p.getGameMode().equals(GameMode.CREATIVE) 
 				&& !p.getGameMode().equals(GameMode.SPECTATOR) 
-				&& !p.isFlying()) {
+				&& !p.isFlying() && p.isGliding()) {
 			if(WeatherHandler.shouldMove(p, p.getLocation(), movevector)) {
 				ItemStack chest = p.getInventory().getChestplate();
 				boolean wearingelytra = false;
