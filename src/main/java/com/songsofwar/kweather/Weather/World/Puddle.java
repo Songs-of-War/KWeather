@@ -1,15 +1,14 @@
 package com.songsofwar.kweather.Weather.World;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Random;
+import java.util.*;
 
 import com.songsofwar.kweather.KWeather;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Levelled;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -21,20 +20,42 @@ public class Puddle
 	private static ArrayList<World> wetworlds = new ArrayList<World>();
 	private static ArrayList<Puddle> puddles = new ArrayList<Puddle>();
 	private static double sizeincrease = 0.75;
-	
-	private LinkedList<Location> puddlelocations = new LinkedList<Location>();
+
+	private static LinkedList<Location> puddlelocations = new LinkedList<Location>();
 	private Location location;
-	
+
+
+	public LinkedList<Location> getPuddlelocations() {
+		return puddlelocations;
+	}
+
+	public void clearPuddlelocations() {
+		puddlelocations.clear();
+	}
+
 	public Puddle(Location location, WorldWeatherType wwt)
 	{
 		this.location = location;
-		
+
 		createPuddle();
 		if(!currentpdlweather.contains(wwt)) {
 			currentpdlweather.add(wwt);
 		}
 	}
-	
+
+	public static List<Block> getNearbyBlocks(Location location, int radius) {
+		List<Block> blocks = new ArrayList<Block>();
+		for(int x = location.getBlockX() - radius; x <= location.getBlockX() + radius; x++) {
+			for(int y = location.getBlockY() - radius; y <= location.getBlockY() + radius; y++) {
+				for(int z = location.getBlockZ() - radius; z <= location.getBlockZ() + radius; z++) {
+					blocks.add(location.getWorld().getBlockAt(x, y, z));
+				}
+			}
+		}
+		return blocks;
+	}
+
+
 	private boolean setLocToPuddle(Location loc)
 	{
 		if(!WeatherHandler.checkValidWaterLocation(loc)) {return false;}
@@ -97,11 +118,17 @@ public class Puddle
 			if(puddle.getWorld().equals(world)) {
 				if(puddle.getLocation().getBlock().getType().equals(Material.WATER)) {
 					puddle.getLocation().getBlock().setType(Material.AIR);
+					for(Block b : getNearbyBlocks(puddle.getLocation(), 2)) {
+						// This is hacky I know, but meh
+						BlockData bd = b.getBlockData();
+						b.setType(Material.AIR, true);
+						b.setBlockData(bd, true);
+					}
 				}
 				remove.add(puddle);
 			}
 		}
-		
+
 		puddles.removeAll(remove);
 	}
 	
