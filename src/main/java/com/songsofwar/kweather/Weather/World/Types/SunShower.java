@@ -71,7 +71,8 @@ public class SunShower extends WorldWeather
 			loc.add(dx, 0, dz);
 			if(!WeatherHandler.isLocationLoaded(loc)) {continue;}
 			loc.setY(p.getLocation().getY() + 30);
-			p.spawnParticle(Particle.DRIP_WATER, loc, 1);
+			// Only put the particle if there is a direct view to the sky
+			if(loc.getBlock().getLightFromSky() == 15) p.spawnParticle(Particle.DRIP_WATER, loc, 1);
 		}
 	}
 }

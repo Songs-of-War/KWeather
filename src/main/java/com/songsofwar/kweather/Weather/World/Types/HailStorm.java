@@ -85,8 +85,11 @@ public class HailStorm extends WorldWeather
 			if(WeatherHandler.isLocationLoaded(loc) && !WeatherHandler.locationIsProtected(loc)) {
 				loc.setY(p.getWorld().getMaxHeight());
 				loc.subtract(0, heightdif*r.nextDouble(), 0);
-				sb = (Snowball) loc.getWorld().spawnEntity(loc, EntityType.SNOWBALL);
-				sb.setMetadata("hailstone", new FixedMetadataValue(KWeather.getPlugin(), damageentities));
+				// Only put the particle if there is a direct view to the sky
+				if(loc.getBlock().getLightFromSky() == 15) {
+					sb = (Snowball) loc.getWorld().spawnEntity(loc, EntityType.SNOWBALL);
+					sb.setMetadata("hailstone", new FixedMetadataValue(KWeather.getPlugin(), damageentities));
+				}
 			}
 		}
 		
@@ -100,8 +103,11 @@ public class HailStorm extends WorldWeather
 			}
 			loc.setY(p.getLocation().getY() + 50);
 			loc.subtract(0, heightdif*r.nextDouble(), 0);
-			sb = (Snowball) loc.getWorld().spawnEntity(loc, EntityType.SNOWBALL);
-			sb.setMetadata("hailstone", new FixedMetadataValue(KWeather.getPlugin(), damageentities));
+			// Only put the particle if there is a direct view to the sky
+			if(loc.getBlock().getLightFromSky() == 15) {
+				sb = (Snowball) loc.getWorld().spawnEntity(loc, EntityType.SNOWBALL);
+				sb.setMetadata("hailstone", new FixedMetadataValue(KWeather.getPlugin(), damageentities));
+			}
 		}
 	}
 	
